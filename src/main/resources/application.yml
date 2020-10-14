@@ -1,0 +1,13 @@
+
+
+server:
+ port: 8080
+
+spring:
+ data:
+  mongodb:
+   host: 182.215.139.141
+   port: 27017
+   username: root
+   password: yi109304
+   database: admin 
