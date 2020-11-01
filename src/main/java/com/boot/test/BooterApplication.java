@@ -14,11 +14,9 @@ public class BooterApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BooterApplication.class, args);
 	}
-	
 
 	@GetMapping("/test")
 	public Object ready() {
-		Member member = new Member();
 		return "I'm ready";
 	} 
 	

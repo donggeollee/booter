@@ -8,6 +8,11 @@ spring:
   mongodb:
    host: 182.215.139.141
    port: 27017
-   username: root
+   username: donggeol
    password: yi109304
-   database: admin 
+   database: practice
+
+  profiles:
+   active: dev
+ autoconfigure:
+  exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
