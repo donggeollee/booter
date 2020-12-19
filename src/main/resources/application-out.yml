@@ -7,7 +7,7 @@ spring:
  application:
   name: booter
  datasource:
-  url: jdbc:mysql://192.168.45.195:3306/booter?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Seoul
+  url: jdbc:mysql://49.165.248.15:3306/booter?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Seoul
   username: donggeol
   password: yi109304
   driver-class-name: com.mysql.cj.jdbc.Driver
@@ -27,7 +27,7 @@ spring:
   generate-ddl: true
 
  profiles:
-  active: local
+  active: local-out
 
 
 logging:
