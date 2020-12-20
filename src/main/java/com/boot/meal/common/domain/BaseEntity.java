@@ -1,4 +1,4 @@
-package com.boot.test.common.domain;
+package com.boot.meal.common.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

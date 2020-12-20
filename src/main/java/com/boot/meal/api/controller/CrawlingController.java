@@ -1,4 +1,4 @@
-package com.boot.test.api.controller;
+package com.boot.meal.api.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
