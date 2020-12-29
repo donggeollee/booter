@@ -1,17 +1,40 @@
-
 server:
- port: 8080
+ port: 8765
 
 spring:
- data:
-  mongodb:
-   host: localhost
-   port: 27017
-   username: donggeol
-   password: yi109304
-   database: practice
+ application:
+  name: booter
+ datasource:
+  url: jdbc:mysql://192.168.45.195:3306/booter?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Seoul
+  username: donggeol
+  password: yi109304
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  hikari:
+   auto-commit: false
+   connection-test-query: SELECT 1
+   minimum-idle: 10
+   maximum-pool-size: 50
+   transaction-isolation: TRANSACTION_READ_UNCOMMITTED
+   pool-name: pool-booter
+ jpa:
+  database: mysql
+  database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  properties:
+   hibernate:
+    format_sql: true
+  generate-ddl: true
 
-  profiles:
-   active: dev
- autoconfigure:
-  exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+ profiles:
+  active: dev
+
+#
+#logging:
+# level:
+#  org:
+#   springframework:
+#    data: DEBUG
+
+# autoconfigure:
+#  exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+

@@ -1,12 +1,10 @@
 package com.boot.meal.api.biz.menu.domain;
 
+import com.boot.meal.api.biz.restaurant.domain.Restaurant;
 import com.boot.meal.common.domain.BaseEntity;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -20,6 +18,6 @@ public class Menu extends BaseEntity {
     private Boolean isSignature;
     private String thumbnailUrl;
 
-//    @ManyToOne
-//    private Restaurant restaurant;
+    @ManyToOne
+    private Restaurant restaurant;
 }

@@ -12,7 +12,7 @@
 	<artifactId>booter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>booter</name>
-	<description>how to boot developing</description>
+	<description>how to develop boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -31,6 +31,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.7.Final</version>
 		</dependency>
 		<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -93,9 +98,14 @@
 			<version>2.6</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.4.1</version>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>

@@ -1,14 +1,14 @@
 package com.boot.meal.api.biz.access.domain;
 
+import com.boot.meal.api.biz.notification.domain.Notification;
+import com.boot.meal.api.biz.user.domain.User;
 import com.boot.meal.common.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @ 사용자의 접속에 대한 정보 엔티티
@@ -29,10 +29,10 @@ public class Access extends BaseEntity {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	LocalDateTime lastUsedDate; 							// 실제 마지막 사용 시간 :: 푸시 3번 이상 터치에 대한 업데이트
 
-//	@ManyToOne
-//	private User user;
-//	@OneToMany(fetch = FetchType.LAZY,mappedBy = "access")
-//	private List<Notification> notification;
+	@ManyToOne
+	private User user;
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "access")
+	private List<Notification> notification;
 
 }
 

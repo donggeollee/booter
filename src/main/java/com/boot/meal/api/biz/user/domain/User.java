@@ -1,17 +1,19 @@
 package com.boot.meal.api.biz.user.domain;
 
+import com.boot.meal.api.biz.notification.domain.Notification;
 import com.boot.meal.common.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
+@Setter
 @Entity
 //public class Member extends BaseEntity implements UserDetails { // 시큐리티 적용 시 고려
 public class User extends BaseEntity {
@@ -36,16 +38,16 @@ public class User extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
-	@NotNull
+	@NotBlank
 	String email;
-	@NotNull
+	@NotBlank
 	String signupType; 									// ENUM :: email, naver, kakao, google
-	@NotNull
+	@NotBlank
 	String password;
 	String phone1;
 	String phone2;
 	String phone3;
-	@NotNull
+	@NotBlank
 	String gender;
 	String ip;
 	boolean isDelete = false;
@@ -56,10 +58,10 @@ public class User extends BaseEntity {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	LocalDateTime lastLoginDate;
 
-//	@OneToOne
-//	@JoinColumn(name="id")
-//	private UserNotificationSetting userNotificationSetting;
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-//	private List<Notification> notification;
+	@OneToOne
+	@JoinColumn(name="id")
+	private UserNotificationSetting userNotificationSetting;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private List<Notification> notification;
 }
 

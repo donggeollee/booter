@@ -36,8 +36,8 @@ public class UserNotificationSetting extends BaseEntity {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	LocalDateTime mondayDinnerPushTime;								// 월요일 저녁 추천 시간
 
-//	@OneToOne(mappedBy = "user_notification_setting")
-//	User user;
+	@OneToOne(mappedBy = "userNotificationSetting")
+	User user;
 
 }
 

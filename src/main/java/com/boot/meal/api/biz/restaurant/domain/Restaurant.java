@@ -1,8 +1,10 @@
 package com.boot.meal.api.biz.restaurant.domain;
 
+import com.boot.meal.api.biz.menu.domain.Menu;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -24,8 +26,8 @@ public class Restaurant {
 
     private Double grade;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-//    private List<Menu> menu;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    private List<Menu> menuList;
 
 
 }

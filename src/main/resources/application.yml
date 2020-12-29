@@ -25,13 +25,15 @@ spring:
    hibernate:
     format_sql: true
   generate-ddl: true
-
+  hibernate:
+   ddl-auto: update
  profiles:
   active: local
 
 
 logging:
  level:
+  web: DEBUG
   org:
    springframework:
     data: DEBUG

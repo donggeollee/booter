@@ -4,13 +4,13 @@ server:
  port: 8080
 
 spring:
- data:
-  mongodb:
-   host: localhost
-   port: 27017
-   username: donggeol
-   password: yi109304
-   database: practice
+ datasource:
+  url: jdbc:mysql://192.168.45.195:3306/booter?serverTimezone=UTC&characterEncoding=UTF-8
+  username: donggeol
+  password: yi109304
+  # data:
+#  mongodb:
+#   uri: mongodb+srv://donggeol:yi109304@mongodb-practice-free.wkzp6.mongodb.net/test?authSource=admin&replicaSet=atlas-tgmpsm-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
 
   profiles:
    active: prod
