@@ -5,15 +5,17 @@ import com.boot.meal.api.biz.user.domain.User;
 import com.boot.meal.common.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * @ 사용자의 접속에 대한 정보 엔티티
+ * @ 사용자에게 접근. 점심, 저녁
  */
 @Getter
+@ToString
 @Entity
 public class Access extends BaseEntity {
 
@@ -33,6 +35,8 @@ public class Access extends BaseEntity {
 	private User user;
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "access")
 	private List<Notification> notification;
+
+
 
 }
 

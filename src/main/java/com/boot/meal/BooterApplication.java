@@ -1,71 +1,29 @@
 package com.boot.meal;
 
-import com.boot.meal.api.biz.user.domain.User;
-import com.boot.meal.api.biz.user.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
-
-@RestController
+@Slf4j
+@ComponentScan({"com.boot.meal.common","com.boot.agora"})
+@Controller
 @SpringBootApplication
 public class BooterApplication {
 
-	@Autowired
-	Environment environment;
-
-	@Autowired
-	UserRepository userRepository;
-
-	@Value("${spring.profiles.active}")
-	String activeProfile;
-
 	public static void main(String[] args) {
+//		System.setProperty("spring.devtools.restart.enables","false");
+//		System.setProperty("spring.devtools.livereload","true");
 		SpringApplication.run(BooterApplication.class, args);
+		log.info("시스템 구동 완료");
 	}
 
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String home(){
-		return "hello booter";
+		return "/page/home";
 	}
 
-	@GetMapping("/post")
-	public String post(@RequestParam String jsonString){
-		return jsonString;
-	}
 
-	@RequestMapping("/view/user")
-	public String viewMember() {
-		return "Member.html View!";
-	}
-
-	@RequestMapping(value = "/api/users", method = RequestMethod.GET)
-	public List<User> findMembers(){
-		return userRepository.findAll();
-	}
-
-//	@RequestMapping(value = "/api/member/{idx}", method = RequestMethod.GET)
-//	public User findMember(@PathVariable long idx){
-//		return userRepository.findOne(idx).get();
-//	}
-
-	@RequestMapping(value = "/api/user", method = RequestMethod.POST)
-	public User saveMember(@RequestBody User user){
-		return userRepository.save(user);
-	}
-
-	@RequestMapping(value = "/api/user", method = RequestMethod.PUT)
-	public User updateMember(@RequestBody User user){
-		return userRepository.save(user);
-	}
-
-//	@RequestMapping(value = "/api/member/{idx}", method = RequestMethod.DELETE)
-//	public String deleteMember(@PathVariable long idx){
-//		userRepository.delete();
-//		return "delete";
-//	}
 }

@@ -3,10 +3,12 @@ package com.boot.meal.api.biz.menu.domain;
 import com.boot.meal.api.biz.restaurant.domain.Restaurant;
 import com.boot.meal.common.domain.BaseEntity;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Getter
+@ToString
 @Entity
 public class Menu extends BaseEntity {
 

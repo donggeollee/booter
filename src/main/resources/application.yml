@@ -2,6 +2,11 @@ server:
  port: 8765
 
 spring:
+# devtools:
+#  livereload:
+#   enabled: true
+#  thymeleaf:
+#   cache: false
  autoconfigure:
   exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
  application:

@@ -1,9 +1,6 @@
 package com.boot.meal.common.util;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
@@ -28,7 +25,7 @@ public class Header<T> {
     public static <T> Header<T> OK(){
         return (Header<T>) Header.builder()
                 .transactionTime(LocalDateTime.now())
-                .resultCode("OK")
+                .resultCode("200")
                 .description("OK")
                 .build();
     }
@@ -45,7 +42,7 @@ public class Header<T> {
     public static <T> Header<T> ERROR(String resultCode, String description, Exception exception){
         return (Header<T>) Header.builder()
                 .transactionTime(LocalDateTime.now())
-                .resultCode("ERROR")
+                .resultCode(resultCode)
                 .description(description)
                 .exception(exception)
                 .build();
