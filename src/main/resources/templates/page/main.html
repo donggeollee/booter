@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<!-- index.html 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/page/home.css}" >
+</th:block>
+
+<!-- index.html 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/page/home.js}"></script>
+</th:block>
+<th:block layout:fragment="content_body" style="color:red;board:1 solid">
+
+    <h1 id="qwe"> Main Page </h1>
+
+    <div style="color: blueviolet">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse ex impedit incidunt ipsa maxime nisi quia quidem sapiente! Adipisci dolor earum et nam optio rem reprehenderit similique? Asperiores debitis doloribus et eum eveniet ex expedita in iure iusto laborum laudantium libero magni modi necessitatibus nemo nulla odit officia omnis optio perferendis quasi, reprehenderit saepe sequi similique sunt tempora tenetur unde veritatis vero vitae. Ab asperiores, aspernatur beatae culpa distinctio dolore esse est excepturi, fuga fugiat inventore ipsa ipsum modi, nemo nisi non nostrum officia perferendis placeat possimus quae quam quis quod recusandae repellat sequi sit soluta temporibus tenetur veniam voluptate.
+    </div>
+
+    <script>
+        $("#qwe").click(function(){
+            alert("1111111")
+
+        });
+
+    </script>
+</th:block>
+
+
+</html>

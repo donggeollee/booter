@@ -14,7 +14,7 @@ public class Header<T> {
 
     private LocalDateTime transactionTime;
 
-    private String resultCode;
+    private int resultCode;
 
     private String description;
 
@@ -25,12 +25,12 @@ public class Header<T> {
     public static <T> Header<T> OK(){
         return (Header<T>) Header.builder()
                 .transactionTime(LocalDateTime.now())
-                .resultCode("200")
+                .resultCode(200)
                 .description("OK")
                 .build();
     }
 
-    public static <T> Header<T> OK(T data, String resultCode, String description){
+    public static <T> Header<T> OK(T data, int resultCode, String description){
         return (Header<T>) Header.builder()
                 .transactionTime(LocalDateTime.now())
                 .resultCode(resultCode)
@@ -39,7 +39,7 @@ public class Header<T> {
                 .build();
     }
 
-    public static <T> Header<T> ERROR(String resultCode, String description, Exception exception){
+    public static <T> Header<T> ERROR(int resultCode, String description, Exception exception){
         return (Header<T>) Header.builder()
                 .transactionTime(LocalDateTime.now())
                 .resultCode(resultCode)

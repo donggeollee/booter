@@ -15,15 +15,26 @@
 <th:block layout:fragment="script">
     <script th:src="@{/js/page/home.js}"></script>
 </th:block>
+<th:block layout:fragment="content_body" style="color:red;board:1 solid">
 
-<th:block layout:fragment="content_body">
-    <h1 id="qwe"> content </h1>
+    <h1 id="qwe"> Login Page </h1>
+
+    <form>
+        <div>
+            <label for="email_input">email </label>
+            <input type="email" id="email_input" name="email_input">
+        </div>
+
+    </form>
+
+    <script>
+        $("#qwe").click(function(){
+            alert("1111111")
+
+        });
+
+    </script>
 </th:block>
 
-<script>
-    $("#qwe").on("click", e =>{
-        alert("1111111")
-    })
 
-</script>
 </html>

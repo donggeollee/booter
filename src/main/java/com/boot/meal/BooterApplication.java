@@ -1,5 +1,6 @@
 package com.boot.meal;
 
+import com.boot.meal.api.biz.user.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,9 +21,19 @@ public class BooterApplication {
 		log.info("시스템 구동 완료");
 	}
 
+	@GetMapping("")
+	public String goToMainPage(){
+		return "/page/main";
+	}
+
 	@GetMapping("/home")
-	public String home(){
+	public String goToHomePage(){
 		return "/page/home";
+	}
+
+	@GetMapping("/login")
+	public String goToLoginPage(){
+		return "/page/login";
 	}
 
 

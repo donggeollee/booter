@@ -1,4 +1,6 @@
 server:
+ servlet:
+  context-path: /
  port: 8765
 
 spring:
@@ -9,8 +11,10 @@ spring:
 #   cache: false
  autoconfigure:
   exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
  application:
   name: booter
+
  datasource:
   url: jdbc:mysql://192.168.45.195:3306/booter?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Seoul
   username: donggeol
@@ -23,6 +27,7 @@ spring:
    maximum-pool-size: 50
    transaction-isolation: TRANSACTION_READ_UNCOMMITTED
    pool-name: pool-booter
+
  jpa:
   database: mysql
   database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -32,9 +37,12 @@ spring:
   generate-ddl: true
   hibernate:
    ddl-auto: update
+
  profiles:
   active: local
 
+jwt:
+ base64-secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
 
 logging:
  level:
