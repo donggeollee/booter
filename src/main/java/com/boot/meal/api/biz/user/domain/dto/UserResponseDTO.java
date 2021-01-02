@@ -34,7 +34,7 @@ public class UserResponseDTO {
 	private LocalDateTime lastLoginDate;
 
 	private UserNotificationSetting userNotificationSetting;
-	private List<Notification> notification;
+	private List<Notification> notificationList;
 
 	public static UserResponseDTO of(User user){
 		return UserResponseDTO.builder()

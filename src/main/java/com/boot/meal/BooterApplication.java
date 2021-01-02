@@ -1,6 +1,5 @@
 package com.boot.meal;
 
-import com.boot.meal.api.biz.user.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
-@ComponentScan({"com.boot.meal.common","com.boot.agora"})
+@ComponentScan({"com.boot.meal","com.boot.agora"})
 @Controller
 @SpringBootApplication
 public class BooterApplication {

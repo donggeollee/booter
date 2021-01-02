@@ -6,6 +6,8 @@ import com.boot.meal.security.Role;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,24 +37,38 @@ public class UserRequestDTO {
 	private UserNotificationSetting userNotificationSetting;
 	private List<Notification> notificationList;
 
-//	public static UserRequestDTO of(User user){
-//		return UserRequestDTO.builder()
-//				.id(user.getId())
-//				.email(user.getEmail())
-//				.password(user.getPassword())
-//				.signupType(user.getSignupType())
-//				.phone1(user.getPhone1())
-//				.phone2(user.getPhone2())
-//				.phone3(user.getPhone3())
-//				.gender(user.getGender())
-//				.ip(user.getIp())
-//				.isDelete(user.isDelete())
-//				.isMobile(user.isMobile())
-//				.isWeb(user.isWeb())
-//				.lastLoginDate(user.getLastLoginDate())
-//				.userNotificationSetting(user.getUserNotificationSetting())
-//				.notificationList(user.getNotificationList())
-//				.build();
-//	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	}
+
+	public void setEncodedPassword(String encodedPassword){
+		this.password = encodedPassword;
+	}
+	public void setRole(Role role){
+		this.role = role;
+	}
+	/*
+	public static UserRequestDTO of(User user){
+		return UserRequestDTO.builder()
+				.id(user.getId())
+				.email(user.getEmail())
+				.password(user.getPassword())
+				.signupType(user.getSignupType())
+				.phone1(user.getPhone1())
+				.phone2(user.getPhone2())
+				.phone3(user.getPhone3())
+				.gender(user.getGender())
+				.ip(user.getIp())
+				.isDelete(user.isDelete())
+				.isMobile(user.isMobile())
+				.isWeb(user.isWeb())
+				.lastLoginDate(user.getLastLoginDate())
+				.userNotificationSetting(user.getUserNotificationSetting())
+				.notificationList(user.getNotificationList())
+				.build();
+	}
+	 */
 }
 

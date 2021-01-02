@@ -29,11 +29,13 @@ spring:
    pool-name: pool-booter
 
  jpa:
+  open-in-view : false
   database: mysql
   database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   properties:
    hibernate:
     format_sql: true
+    show_sql: true
   generate-ddl: true
   hibernate:
    ddl-auto: update
@@ -46,9 +48,10 @@ jwt:
 
 logging:
  level:
-  web: DEBUG
+#  web: DEBUG
   org:
    springframework:
+    security: DEBUG
     data: DEBUG
 
 

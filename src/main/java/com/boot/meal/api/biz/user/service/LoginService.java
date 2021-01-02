@@ -29,7 +29,7 @@ public class LoginService {
     public Optional<User> login(UserRequestDTO userRequest) {
 
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(userRequest.getEmail(), userRequest.getPassword());
+                new UsernamePasswordAuthenticationToken(userRequest.getEmail(),userRequest.getPassword());
 
         //사용자 비밀번호 체크, 패스워드 일치하지 않는다면 Exception 발생 및 이후 로직 실행 안됨
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
@@ -53,7 +53,6 @@ public class LoginService {
     }
 
     public AuthToken createAuthToken(User user) {
-
         Date expiredDate = Date.from(LocalDateTime.now().plusMinutes(LOGIN_RETENTION_MINUTES).atZone(ZoneId.systemDefault()).toInstant());
         return jwtAuthTokenProvider.createAuthToken(user.getEmail(), user.getRole(), expiredDate);
     }

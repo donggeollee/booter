@@ -19,9 +19,9 @@ import java.util.Optional;
 @Slf4j
 public class JwtFilter extends GenericFilterBean {
 
-    private static final String AUTHORIZATION_HEADER = "x-auth-token";
+    private static final String AUTHORIZATION_HEADER = "X-AGORA-AUTH-TOKEN";
 
-    private JwtAuthTokenProvider jwtAuthTokenProvider;
+    private final JwtAuthTokenProvider jwtAuthTokenProvider;
 
     JwtFilter(JwtAuthTokenProvider jwtAuthTokenProvider) {
         this.jwtAuthTokenProvider = jwtAuthTokenProvider;
@@ -29,6 +29,7 @@ public class JwtFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        log.info("perform Jwt Token validate !");
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         Optional<String> token = resolveToken(httpServletRequest);

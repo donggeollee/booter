@@ -15,6 +15,7 @@ import java.util.List;
 
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -73,6 +74,7 @@ public class User extends BaseEntity {
 				.email(userRequestDTO.getEmail())
 				.password(userRequestDTO.getPassword())
 				.signupType(userRequestDTO.getSignupType())
+				.role(userRequestDTO.getRole().getRole())
 				.country(userRequestDTO.getCountry())
 				.phone1(userRequestDTO.getPhone1())
 				.phone2(userRequestDTO.getPhone2())

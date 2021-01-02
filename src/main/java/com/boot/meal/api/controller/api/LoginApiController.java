@@ -15,29 +15,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/login")
 @RestController
-public class LoginController {
+public class LoginApiController {
 
     private final LoginService loginService;
 
     @PostMapping
     public Header<UserResponseDTO> login(@RequestBody UserRequestDTO userRequest){
+        log.info("request param : {}", userRequest);
 
         Optional<User> optionalUser = loginService.login(userRequest);
 
         if(optionalUser.isPresent()){
             JwtAuthToken jwtAuthToken = (JwtAuthToken)loginService.createAuthToken(optionalUser.get());
-
-            Map<String, Object> resultMap = new HashMap<>();
-            resultMap.put("user", optionalUser.get());
-            resultMap.put("jwtAuthToken", jwtAuthToken.getToken());
 
             UserResponseDTO userResponse = UserResponseDTO.of(optionalUser.get());
             userResponse.setJwtToken(jwtAuthToken.getToken());

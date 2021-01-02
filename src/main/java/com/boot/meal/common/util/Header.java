@@ -2,6 +2,8 @@ package com.boot.meal.common.util;
 
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 import java.time.LocalDateTime;
 
@@ -39,13 +41,25 @@ public class Header<T> {
                 .build();
     }
 
-    public static <T> Header<T> ERROR(int resultCode, String description, Exception exception){
-        return (Header<T>) Header.builder()
+    public static Header ERROR(int resultCode, String description){
+        return (Header) Header.builder()
+                .transactionTime(LocalDateTime.now())
+                .resultCode(resultCode)
+                .description(description)
+                .build();
+    }
+
+    public static <T> Header ERROR(int resultCode, String description, Exception exception){
+        return (Header) Header.builder()
                 .transactionTime(LocalDateTime.now())
                 .resultCode(resultCode)
                 .description(description)
                 .exception(exception)
                 .build();
+    }
+
+    public String toString(){
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
 }

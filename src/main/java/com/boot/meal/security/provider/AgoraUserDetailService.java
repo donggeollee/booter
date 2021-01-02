@@ -2,6 +2,7 @@ package com.boot.meal.security.provider;
 
 import com.boot.meal.api.biz.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AgoraUserDetailService implements UserDetailsService {
@@ -21,6 +23,8 @@ public class AgoraUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        log.info("loadUserByUsername : {}", email);
+
         return userRepository.findByEmail(email)
                 .map(this::createSpringSecurityUser)
                 .orElseThrow(RuntimeException::new);

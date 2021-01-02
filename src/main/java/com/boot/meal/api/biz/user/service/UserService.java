@@ -6,33 +6,50 @@ import com.boot.meal.api.biz.user.domain.dto.UserResponseDTO;
 import com.boot.meal.api.biz.user.repository.UserRepository;
 import com.boot.meal.common.service.BaseService;
 import com.boot.meal.common.util.Header;
+import com.boot.meal.common.util.SecurityUtils;
+import com.boot.meal.security.Role;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class UserService extends BaseService<UserRequestDTO, UserResponseDTO, User> {
 
-    private UserRepository userRepository;
-
-    UserService(UserRepository userRepository){
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public Header<UserResponseDTO> create(Header<UserRequestDTO> request) {
-        log.info("user 생성");
-        User user = null;
+
+        UserRequestDTO userRequestDTO = request.getData();
+
+        // 1. 동일 이메일 확인
+        if( userRepository.findByEmail(userRequestDTO.getEmail()).isPresent() ){
+            return Header.ERROR(300, "This email is in use");
+        }
+
+        // 2. ROLE 부여
+        userRequestDTO.setRole(Role.USER);
+
+        // 3. password 암호화
+        userRequestDTO.setEncodedPassword(SecurityUtils.passwordEncoding(userRequestDTO.getPassword()));
+
+        User user;
         try{
-            user = userRepository.save(requestToEntity(request.getData(), User.class));
+            user = baseRepository.save(User.of(userRequestDTO));
         } catch(Exception e){
+            e.printStackTrace();
             return Header.ERROR(500,"user create fail", e);
         }
 
-        return Header.OK(entityToResponse(user, UserResponseDTO.class), 200,"user create success");
+        log.info("Create User Complete");
+        return Header.OK(UserResponseDTO.of(user), 200,"user create success");
     }
 
     @Override
     public Header<UserResponseDTO> read(Long id) {
-        return null;
+        return Header.OK(UserResponseDTO.of(userRepository.findById(id).orElse(new User())), 200, "find user success");
     }
 
     @Override

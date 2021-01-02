@@ -1,6 +1,6 @@
 package com.boot.meal.config.security;
 
-import com.boot.meal.security.JwtAccessDeniedHandler;
+import com.boot.meal.security.exception.JwtAccessDeniedHandler;
 import com.boot.meal.security.JwtAuthenticationEntryPoint;
 import com.boot.meal.security.Role;
 import com.boot.meal.security.provider.JwtAuthTokenProvider;
@@ -50,14 +50,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/login/**").permitAll()
-
+                .antMatchers("/api/v1/login").permitAll()
                 .antMatchers("/api/v1/**").hasAnyAuthority(Role.USER.getRole())
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
                 .apply(securityConfigurerAdapter());
-
-
     }
 }

@@ -1,6 +1,6 @@
 package com.boot.meal.security.provider;
 
-import com.boot.meal.common.util.Keys;
+import com.boot.meal.common.util.SecurityUtils;
 import com.boot.meal.security.exception.TokenValidFailedException;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class JwtAuthTokenProvider implements AuthTokenProvider<JwtAuthToken> {
 
     public JwtAuthTokenProvider(String base64Secret) throws InvalidKeyException {
         byte[] keyBytes = Base64.decodeBase64(base64Secret);
-        this.key = Keys.hmacShaKeyFor(keyBytes);
+        this.key = SecurityUtils.hmacShaKeyFor(keyBytes);
     }
 
     @Override
