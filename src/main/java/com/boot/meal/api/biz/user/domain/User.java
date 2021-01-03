@@ -62,9 +62,8 @@ public class User extends BaseEntity {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime lastLoginDate;
 
-	@OneToOne
-	@JoinColumn(name="id")
-	private UserNotificationSetting userNotificationSetting;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private List<UserNotificationSetting> userNotificationSettingList;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Notification> notificationList;
 
@@ -85,7 +84,7 @@ public class User extends BaseEntity {
 				.isMobile(userRequestDTO.isMobile())
 				.isWeb(userRequestDTO.isWeb())
 				.lastLoginDate(userRequestDTO.getLastLoginDate())
-				.userNotificationSetting(userRequestDTO.getUserNotificationSetting())
+				.userNotificationSettingList(userRequestDTO.getUserNotificationSettingList())
 				.notificationList(userRequestDTO.getNotificationList())
 				.build();
 	}

@@ -33,7 +33,7 @@ public class UserResponseDTO {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime lastLoginDate;
 
-	private UserNotificationSetting userNotificationSetting;
+	private List<UserNotificationSetting> userNotificationSettingList;
 	private List<Notification> notificationList;
 
 	public static UserResponseDTO of(User user){

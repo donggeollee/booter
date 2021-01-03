@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * @ 사용자 푸시 알림 정보
@@ -30,13 +30,14 @@ public class UserNotificationSetting extends BaseEntity {
 	boolean isSunday;
 	boolean isEarlyNotification; 									// 식사시간 15분전 알림설정
 
-	// 기본 시간 어떻게 정할 것인지 <= 배치 아키텍쳐 고민
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	LocalDateTime mondayLaunchPushTime; 							// 월요일 점심 추천 시간
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	LocalDateTime mondayDinnerPushTime;								// 월요일 저녁 추천 시간
+	@JsonFormat(pattern = "HH:mm:ss")
+	LocalTime earlyNotificationTime;
 
-	@OneToOne(mappedBy = "userNotificationSetting")
+	// 기본 시간 어떻게 정할 것인지 <= 배치 아키텍쳐 고민
+	@JsonFormat(pattern = "HH:mm:ss")
+	LocalTime pushTime; 							// 추천 시간
+
+	@ManyToOne
 	User user;
 
 }
