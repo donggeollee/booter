@@ -37,7 +37,7 @@ public class LoginService {
         //로그인 성공하면 인증 객체 생성 및 스프링 시큐리티 설정
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        //TODO: 권한은 한개만 갖는다고 가정하고 구현하였는데.. 깔끔하지 않음
+        //TODO: 권한을 여러개 가질 수 있도록 수정 필요
         Role role = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .findFirst()

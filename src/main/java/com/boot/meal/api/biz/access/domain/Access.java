@@ -36,7 +36,5 @@ public class Access extends BaseEntity {
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "access")
 	private List<Notification> notification;
 
-
-
 }
 

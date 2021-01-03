@@ -32,7 +32,6 @@ public class AgoraUserDetailService implements UserDetailsService {
 
     private User createSpringSecurityUser(com.boot.meal.api.biz.user.domain.User user) {
         List<GrantedAuthority> grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRole()));
-        //TODO: username 에 email을 넣는 방법이 적합한지?
         return new User(user.getEmail(), user.getPassword(), grantedAuthorities);
     }
 }

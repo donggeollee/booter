@@ -37,7 +37,7 @@ public class UserService extends BaseService<UserRequestDTO, UserResponseDTO, Us
 
         User user;
         try{
-            user = baseRepository.save(User.of(userRequestDTO));
+            user = userRepository.save(User.of(userRequestDTO));
         } catch(Exception e){
             e.printStackTrace();
             return Header.ERROR(500,"user create fail", e);
